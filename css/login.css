@@ -1,0 +1,124 @@
+body{
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login{
+
+}
+
+.title{
+    font-family: 'Segoe UI';
+    color: white;
+}
+
+.login-form{
+    display: flex; /*change to flex after */
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    padding: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-wrapper i.fa-lock {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.input-wrapper i.fa-eye,
+.input-wrapper i.fa-eye-slash {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: white;
+    cursor: pointer;
+    font-size: 18px; /* Optional: ensure consistent size */
+}
+
+.input-wrapper i.fa-user {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.input-wrapper .login-input {
+    padding-left: 35px; /* Make space for the icon on the left */
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px 35px 10px 35px; /* left for lock, right for eye */
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: white;
+}
+
+::placeholder{
+    color: rgb(216, 216, 216);
+}
+
+.login-button{
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid rgb(80, 196, 235);
+    background-color: rgba(126, 126, 126, 0.2);
+    color: white;
+    
+}
+
+.login-button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.2s;
+}
+
+.login-button:active{
+    background-color: rgba(126, 126, 126, 0.2);
+}
+
+.login-options{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.login-link{
+    color: white;
+    font-family: 'Segoe UI';
+}
+
+.login-link:link{
+    text-decoration: none;
+}
+
+.login-link:hover{
+    text-decoration: underline;
+    color: rgb(91, 203, 255);
+}
+
+
