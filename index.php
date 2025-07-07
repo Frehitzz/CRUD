@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="signup">
-            <form class="signup-form">
+            <form class="signup-form" action="signup.php" method="POST">
                 <h1 class="title">Create Account</h1>
                 <input class="signup-input" type="text" name="username" placeholder="Username"><br>
                 <input class="signup-input" type="email" name="email" placeholder="Email"><br>
