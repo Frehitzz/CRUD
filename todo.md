@@ -5,10 +5,11 @@
 [x] implement password strength validation
 [x] fix color 
 
-## July 5 - Saturday
-[] Make the password eye appear when the user click the field
-[] Hide the passwordeye when the user not clicking the field
-[] starts the php
-[] create the database
-[] create config session
-[] work the signing up
+## July 7 - Monday
+[x] create the database
+[x] create config session
+
+## July 8 - Tuesday
+[x] Make the password eye appear when the user click the field
+[x] Hide the passwordeye when the user not clicking the field
+[] Create an MVC File
