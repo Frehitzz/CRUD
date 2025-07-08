@@ -121,4 +121,12 @@ body{
     color: rgb(91, 203, 255);
 }
 
+/*Hiding the eye icon until the user click the field*/
+#toggle-pass{
+    opacity: 0;
+    transition: 0.3s;
+}
 
+.login-input:focus ~ #toggle-pass{
+    opacity: 1;
+}
