@@ -1,6 +1,11 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<?php 
+require_once("config_session.php"); 
+require_once("MVC_view_signup.php"); // Add this line
+$showSignup = isset($_SESSION["errors_signup"]);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -8,9 +13,9 @@
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 </head>
- <body>
+<body>
     <div class="container">
-        <div class="login">
+        <div class="login" <?php echo $showSignup ? 'style="display: none;"' : ''; ?>>
             <form class="login-form">
                 <h1 class="title">Log in</h1>
                 <div class="input-wrapper">
@@ -24,7 +29,6 @@
                     <i id="toggle-pass" class="fa-solid fa-eye" onclick="pass_manage()"></i>
                 </div>
 
-
                 <div class="login-options">
                     <a href="#" class="login-link" onclick="">Forgot Password?</a>
                     <a href="#" class="login-link" onclick="toggle_signup()">No account yet?</a>
@@ -32,12 +36,25 @@
                 <button class="login-button" type="submit">Log In</button>
             </form>
         </div>
-        <div class="signup">
+        
+        <div class="signup" <?php echo $showSignup ? 'style="display: flex;"' : ''; ?>>
             <form class="signup-form" action="signup.php" method="POST">
                 <h1 class="title">Create Account</h1>
-                <input class="signup-input" type="text" name="username" placeholder="Username"><br>
-                <input class="signup-input" type="email" name="email" placeholder="Email"><br>
-                <input id="signup-pass" class="signup-input" type="password" name="pass" placeholder="Password" oninput="pass_strength(this.value)">
+                
+                <?php 
+                // Display error messages if any
+                if (isset($_SESSION["errors_signup"])) {
+                    echo '<div class="error-messages">';
+                    foreach ($_SESSION["errors_signup"] as $error) {
+                        echo '<p style="color: red; font-size: 14px; margin: 5px 0; background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; padding: 8px 12px;">' . htmlspecialchars($error) . '</p>';
+                    }
+                    echo '</div>';
+                }
+                
+                // Keep user input
+                keep_input(); 
+                ?>
+                
                 <div class="strength-indicator">
                     <div class="strength-bar" id="strengthBar"></div> <!--password bar-->
                 </div>
@@ -51,6 +68,14 @@
             </form>
         </div>
     </div>
+    
     <script src="js/script.js"></script>
- </body>
- </html>
+    
+    <?php
+    // Clear the error messages after displaying them
+    if (isset($_SESSION["errors_signup"])) {
+        unset($_SESSION["errors_signup"]);
+    }
+    ?>
+</body>
+</html>
