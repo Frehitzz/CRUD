@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 // we have an object $pdo we need this for the connection of the datababse
 function username_taken(object $pdo, string $username){
@@ -22,6 +23,18 @@ function username_taken(object $pdo, string $username){
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // to display the result whoever called this function
+    return $result;
+}
+
+// just like the username taken function
+function email_taken(object $pdo, string $email){
+
+    $query = "SELECT email FROM users WHERE email = :email;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
 

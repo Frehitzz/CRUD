@@ -27,13 +27,25 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $errors["invalid-email"] = "Invalid Email";
         }
 
+        //CHECK IF THE USERNAME IS ALREADY REGISTERED
         if(username_registered($pdo,$email)){
             $errors["username-taken"] = "The username is already taken";
         }
 
         //CHECK IF THE EMAIL IS ALREADY REGISTERED
-        if(email_registered()){
+        if(email_registered($pdo,$email)){
+            $errors["email-taken"] = "The email is already taken";
+        }
 
+        //CHECK IF THE PASS AND CONFIRMPASS IS MATCH
+        //the symbol !== is for "not equal"
+        if($pass !== $confirmpass){
+            $errors["pass-not-match"] = "The password is not match";
+        }
+
+        //CHECK IF THE PASSWROD STRENGTH IS MET
+        if(password_too_weak($password)){
+            $errors["weak-password"] = "The password is weak";
         }
 
         
