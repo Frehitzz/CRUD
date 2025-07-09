@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
 
         //CHECK IF THE USERNAME IS ALREADY REGISTERED
-        if(username_registered($pdo,$email)){
+        if(username_registered($pdo,$username)){
             $errors["username-taken"] = "The username is already taken";
         }
 
@@ -44,10 +44,27 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
 
         //CHECK IF THE PASSWROD STRENGTH IS MET
-        if(password_too_weak($password)){
+        if(password_too_weak($pass)){
             $errors["weak-password"] = "The password is weak";
         }
 
+        // DISPLAY ERR MESSAGE AND KEEP THE USERS INPUT
+        require_once("config_session.php"); // Start the session and set cookie options
+        if($errors){ //check if theres error in signing up
+            //store the error mess in a seesion so we can display them later
+            $_SESSION["errors_signup"] = $errors;
+            //Store the users input when there are error only username and email will store
+            $signupdata = [
+                "username" => $username, //kepp the entered username
+                "email" => $email // keep the entered email
+            ];
+            
+            //save the user's input in a session to pre fill the form
+            $_SESSION["data_signup"] = $signupdata;
+            // Redirect the user back to the signup form page
+            header("Location: index.php");
+            die(); // stop the script execution after redirect to the header
+        }
         
 
 
