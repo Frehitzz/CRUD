@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
 
         //CHECK IF THE EMAIL IS INVALID
-        if(invalid_email($email)){
+        if(!empty($email) && invalid_email($email)){
             $errors["invalid-email"] = "Invalid Email";
         }
 
@@ -44,31 +44,30 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         }
 
         //CHECK IF THE PASSWROD STRENGTH IS MET
-        if(password_too_weak($pass)){
+        if(!empty($pass) && password_too_weak($pass)){
             $errors["weak-password"] = "The password is weak";
         }
 
         // DISPLAY ERR MESSAGE AND KEEP THE USERS INPUT
         require_once("config_session.php"); // Start the session and set cookie options
-        if($errors){ //check if theres error in signing up
-            //store the error mess in a seesion so we can display them later
-            $_SESSION["errors_signup"] = $errors;
-            //Store the users input when there are error only username and email will store
-            $signupdata = [
-                "username" => $username, //kepp the entered username
-                "email" => $email // keep the entered email
-            ];
-            
-            //save the user's input in a session to pre fill the form
-            $_SESSION["data_signup"] = $signupdata;
-            // Redirect the user back to the signup form page
-            header("Location: index.php");
-            die(); // stop the script execution after redirect to the header
+        if ($errors) {
+        $_SESSION["errors_signup"] = $errors;
+        // Optionally keep input data
+        $_SESSION["data_signup"] = [
+            "username" => $username,
+            "email" => $email
+        ];
+        header("Location: index.php?show=signup"); //show=signup is for showing the signupform
+        exit();
         }
+
+        //Putting the signup info on database
+        create_user($pdo,$username,$email,$pass);
+        $_SESSION['username'] = $username;
+        header("Location: home.php");
+        die();
+
         
-
-
-
 
     }catch(PDOException $e){
         die("COnnection Failed: ". $e->getMessage());

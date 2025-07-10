@@ -1,6 +1,21 @@
 <?php
 declare(strict_types=1);
 
+//dispalying the error message
+function display_signup_err(){
+    if(isset($_SESSION["errors_signup"])){
+        $errors = $_SESSION["errors_signup"];
+
+        echo "<br>";
+
+        foreach ($errors as $error){
+            echo  '<p class="form-error" >'. $error .'</p>';
+        }
+
+    }
+}
+
+
 function keep_input(){
     //CHECK IF "[THERES A SESSION CALLED DATA_SIGNUP]" and if the user fill the "[username input fields]"
     if(isset($_SESSION["data_signup"]["username"])
@@ -14,7 +29,7 @@ function keep_input(){
         // get the input field for username on out index or html\
         // added a value where inside is the session for data signup and the user that fill the username field
        echo '<input class="signup-input" type="text" name="username" placeholder="Username"
-            value=" '.$_SESSION["data_signup"]["username"].' "><br>';
+            value="'.$_SESSION["data_signup"]["username"].'"><br>';
     }else{
         // IF THE USER DID NOT TYPE ON USERNAME FIELD AND HAVE AN ERROR THEN RUN THIS CODE:
         //get the input fieldd on our html and dont change anything
@@ -27,23 +42,24 @@ function keep_input(){
     && !isset($_SESSION["errors_signup"]["invalid-email"])
     && !isset($_SESSION["errors_signup"]["email-taken"]))
     {
-        echo '<input class="signup-input" type="email" name="email" placeholder="Email"
-            value=" ' .$_SESSION["data_signup"]["email"]. ' "><br>';
+        echo '<input class="signup-input" type="text" name="email" placeholder="Email"
+            value="'.$_SESSION["data_signup"]["email"].'"><br>';
     }else{
-        echo '<input class="signup-input" type="email" name="email" placeholder="Email"><br>';
+        echo '<input class="signup-input" type="text" name="email" placeholder="Email"><br>';
     }
 
     //Outsife of the if-else statement put the password field here
     //make sure na yung pagkakasunod sunod the mga input field ay same sa html form mo
     echo '<input id="signup-pass" class="signup-input" type="password" name="pass" placeholder="Password" oninput="pass_strength(this.value)">';
 
+    //If theres no error then the user is login now
+    // this code remove the saved user session 
+    //After a successful signup, we don’t need to remember the previous input anymore.
     if(!isset($_SESSION["errors_signup"])){
         unset($_SESSION["data_signup"]);
     }
 
-
-
+    // AFTE ALL OF THIS DELETE ALL THE INPUT FIELDS FOR SIGNING UP ONLY
+    // AND INSIDE OF THE FORM PUT THIS FUNCTION ON IT
 }
-
-
 ?>

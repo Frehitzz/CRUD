@@ -1,7 +1,6 @@
 <?php 
-require_once("config_session.php"); 
+require_once("config_session.php"); //Add this for to keep the signup data
 require_once("MVC_view_signup.php"); // Add this line
-$showSignup = isset($_SESSION["errors_signup"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +14,8 @@ $showSignup = isset($_SESSION["errors_signup"]);
 </head>
 <body>
     <div class="container">
-        <div class="login" <?php echo $showSignup ? 'style="display: none;"' : ''; ?>>
-            <form class="login-form">
+        <div class="login">
+            <form class="login-form" action="login.php" method="POST">
                 <h1 class="title">Log in</h1>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user"></i>
@@ -37,22 +36,16 @@ $showSignup = isset($_SESSION["errors_signup"]);
             </form>
         </div>
         
-        <div class="signup" <?php echo $showSignup ? 'style="display: flex;"' : ''; ?>>
+        <div class="signup">
             <form class="signup-form" action="signup.php" method="POST">
                 <h1 class="title">Create Account</h1>
                 
+                   
+        
                 <?php 
-                // Display error messages if any
-                if (isset($_SESSION["errors_signup"])) {
-                    echo '<div class="error-messages">';
-                    foreach ($_SESSION["errors_signup"] as $error) {
-                        echo '<p style="color: red; font-size: 14px; margin: 5px 0; background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 4px; padding: 8px 12px;">' . htmlspecialchars($error) . '</p>';
-                    }
-                    echo '</div>';
-                }
-                
-                // Keep user input
-                keep_input(); 
+                display_signup_err();
+                    // Keep user input
+                    keep_input(); 
                 ?>
                 
                 <div class="strength-indicator">
@@ -75,6 +68,9 @@ $showSignup = isset($_SESSION["errors_signup"]);
     // Clear the error messages after displaying them
     if (isset($_SESSION["errors_signup"])) {
         unset($_SESSION["errors_signup"]);
+    }
+    if (isset($_SESSION["data_signup"])) {
+        unset($_SESSION["data_signup"]);
     }
     ?>
 </body>

@@ -34,6 +34,7 @@ function pass_manage() {
     }
 }
 
+//checkbox when click it will show the pass as tesxt
 function passcheckb_manage(){
     const passInput = document.getElementById('signup-pass');
     const confirmpassInput = document.getElementById('signup-pass-confirm');
@@ -73,6 +74,21 @@ function toggle_signup(){
         loginform.style.display = "flex";
     }
 }
+//switches between login and signup forms based on what's written in the URL
+window.addEventListener('load', function() { // runs the code when the loading is finish
+    //gets the text in the URL after the ?, like ?show=signup.
+    const urlParams = new URLSearchParams(window.location.search);
+
+    //if the link have ?show=signup on you php example: index.php?show=signup
+    if (urlParams.get('show') === 'signup') {
+        //hides the login form and display the signup form
+        document.querySelector('.login').style.display = "none";
+        document.querySelector('.signup').style.display = "flex";
+    } else {
+        document.querySelector('.login').style.display = "flex";
+        document.querySelector('.signup').style.display = "none";
+    }
+});
 
 function pass_strength(password){
     const strengthB = document.getElementById('strengthBar');
@@ -114,3 +130,4 @@ function pass_strength(password){
             break;
     }
 }
+

@@ -50,4 +50,3 @@ ini_set('session.use_only_cookies',1);
         $_SESSION["last_regeneration"] = time();
     }
 ?>
-?>

@@ -38,4 +38,23 @@ function email_taken(object $pdo, string $email){
     return $result;
 }
 
+function set_user(object $pdo, string $username, string $email, string $pass){
+    $query = "INSERT INTO users (username, email, pass) VALUES
+            (:username,:email,:pass);";
+    $stmt = $pdo->prepare($query);
+
+    //need this for hashing pass
+    $options = [
+        'cost' => 12
+    ];
+
+    //hashing pass
+    $hashpass = password_hash($pass, PASSWORD_BCRYPT,$options);
+
+    $stmt->bindParam(":username",$username);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":pass", $hashpass);
+    $stmt->execute();
+}
+
 ?>

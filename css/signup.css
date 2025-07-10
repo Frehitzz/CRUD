@@ -15,7 +15,6 @@
 .signup-input{
     height: 20px;
     padding: 8px;
-    margin-bottom: 10px;
     border: none;
     outline: none;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -95,6 +94,17 @@ label{
 .strength-very-strong { background: #059669; width: 100%; }
 
 /* Error message styles */
-.error-messages {
-    margin-bottom: 15px;
+
+/*ERROR MESSAGE */
+
+.form-error{
+    padding: 5px;
+    margin: 0;
+    margin-bottom: 5px;
+    border: 2px solid rgba(255, 145, 0, 0.692);
+    border-radius: 10px;
+    background-color: rgb(235, 80, 88);
+    color: white;
+    font-family: 'Segoe UI';
+    font-weight: 600;
 }
