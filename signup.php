@@ -63,8 +63,14 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         //Putting the signup info on database
         create_user($pdo,$username,$email,$pass);
+
+        //Create a session of username that the user put
+        //this will display on home.php
         $_SESSION['username'] = $username;
+        
+        //after signing up it will redirecxt to home.php
         header("Location: home.php");
+        $pdo = null;
         die();
 
         
