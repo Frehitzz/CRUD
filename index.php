@@ -1,6 +1,7 @@
 <?php 
 require_once("config_session.php"); //Add this for to keep the signup data
 require_once("MVC_view_signup.php"); // Add this line
+require_once("login_view.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,9 @@ require_once("MVC_view_signup.php"); // Add this line
         <div class="login">
             <form class="login-form" action="login.php" method="POST">
                 <h1 class="title">Log in</h1>
+                <?php
+                display_login_err();
+                ?>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user"></i>
                     <input class="login-input" type="text" name="username" placeholder="Username">
