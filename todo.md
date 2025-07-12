@@ -23,9 +23,20 @@
 [x] Create error handling for password strength not met
 [x] Keep the input values in the UI after error
 
-## July 11 - Thursday
+## July 11 - Friday
 [x] Learn again and put comment on your js the passcheckb_manage funtcion
 [x] Also check the index.php put a comment and review how
 [x] Restyle the signup form
 [x] Display the error messages in the UI
 [x] Style the error messages
+
+## July 12 - Sat
+[] Start the login php
+[] design the dashb0ard
+[] Create the login form
+[] Create the login validation
+[] Create the login session
+[] Create the dashboard page
+[] Create the logout function
+[] Create the dashboard UI
+[] Style the dashboard UI
