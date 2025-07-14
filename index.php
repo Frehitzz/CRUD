@@ -33,7 +33,7 @@ require_once("login_view.php");
                 </div>
 
                 <div class="login-options">
-                    <a href="#" class="login-link" onclick="">Forgot Password?</a>
+                    <a href="forgot_pass.php" class="login-link" onclick="">Forgot Password?</a>
                     <a href="#" class="login-link" onclick="toggle_signup()">No account yet?</a>
                 </div>
                 <button class="login-button" type="submit">Log In</button>
