@@ -55,3 +55,16 @@ button:hover{
 button:active{
     background-color: rgba(126, 126, 126, 0.2);
 }
+
+/*FORGOT PASSWORD MESSAGES*/
+.form-error{
+    padding: 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 145, 0, 0.692);
+    border-radius: 10px;
+    background-color: rgb(235, 80, 88);
+    color: white;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+}
