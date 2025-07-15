@@ -30,12 +30,25 @@
 [x] Display the error messages in the UI
 [x] Style the error messages
 
-## July 12 - Sat
-[] Start the login php
+## July 13 - Sunday
+[x] Start the login php
+[x] Create the login form
+[x] Create the login validation
+[x] Create the login session
+[x] display error messages in the login form
+
+
+## July 14 - Monday
+[x] Create a forgot password page
+[x] Create the forgot password form
+[x] add a token column to the database
+
+## July 15 - Tuesday
+[] learn how to use phpmailer
+
+
+##
 [] design the dashb0ard
-[] Create the login form
-[] Create the login validation
-[] Create the login session
 [] Create the dashboard page
 [] Create the logout function
 [] Create the dashboard UI
