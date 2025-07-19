@@ -11,6 +11,6 @@ require_once("MVC_view_signup.php"); // Add this line
     <title>Document</title>
 </head>
 <body>
-<h1> Welcome <?php echo htmlspecialchars($_SESSION['username']);?></h1>
+<h1> Welcome <?php echo htmlspecialchars($_SESSION['user_username']);?></h1>
 </body>
 </html>
