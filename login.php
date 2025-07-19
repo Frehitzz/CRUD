@@ -58,6 +58,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     //Remember when we created this session
     $_SESSION["last_regeneration"] = time();
 
+    //if the user have not error then it will loggged in
     header("Location: home.php");
     die();
         
