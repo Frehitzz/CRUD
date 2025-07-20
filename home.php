@@ -88,8 +88,35 @@ require_once("MVC_view_signup.php"); // Add this line
                         <th>Actions</th>
                     </tr>
                 </thead>
+
+                <?php
+                    require_once("database.php");
+                    //get all the records from the 'inventory' table
+                    $stmt = $pdo->query("SELECT * FROM inventory");
+                    // this get all rows(items) from the result and store the, as arrays
+                    $items = $stmt->fetchAll();
+                ?>
+
                 <tbody>
                     <!-- This is where the items display -->
+
+                     <!-- Loop Through All Items and Display Them in a Table -->
+                     <?php foreach($items as $item): ?>
+                     <tr>
+                        <!-- Inside of the [] is the name of column -->
+                        <td><?= htmlspecialchars($item['id'])?></td>
+                        <td><?= htmlspecialchars($item['item_name'])?></td>
+                        <td><?= htmlspecialchars($item['category'])?></td>
+                        <td><?= htmlspecialchars($item['quantity'])?></td>
+                        <td><?= htmlspecialchars($item['sta_tus'])?></td>
+
+                        <!-- edit and delete button -->
+                        <td>
+                            <a href="edit_item.php">Edit</a>
+                            <a href="delete_item.php" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                     </tr>
+                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
