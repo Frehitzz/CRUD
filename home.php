@@ -57,12 +57,11 @@ require_once("MVC_view_signup.php"); // Add this line
             </div>
         </div>
 
-        <div class="add-item">
-            <button class="button1">+ Add New Item</button>
-        </div>
-
         <div class="inventory">
-            <h1>Inventory Management</h1>
+            <div class="title-and-button">
+                <h1>Inventory Management</h1>
+                <a href="php_inventory/add_item.php"><button class="button1">+ Add New Item</button></a>
+            </div>
             <form>
                 <input type="text" name="search" placeholder="Search Items">
                 <select value="Select categories">
@@ -103,7 +102,7 @@ require_once("MVC_view_signup.php"); // Add this line
                      <!-- Loop Through All Items and Display Them in a Table -->
                      <?php foreach($items as $item): ?>
                      <tr>
-                        <!-- Inside of the [] is the name of column -->
+                        <!-- Inside of the [] is the name of column on our database -->
                         <td><?= htmlspecialchars($item['id'])?></td>
                         <td><?= htmlspecialchars($item['item_name'])?></td>
                         <td><?= htmlspecialchars($item['category'])?></td>
