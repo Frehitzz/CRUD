@@ -105,3 +105,10 @@ th, td {
     border-bottom: 1px solid #EEE;
     text-align: left; /* Align text to left (or center if preferred) */
 }
+
+.title-and-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
