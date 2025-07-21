@@ -1,6 +1,24 @@
 <?php 
 require_once("config_session.php"); //Add this for to keep the signup data
 require_once("MVC_view_signup.php"); // Add this line
+require_once("database.php");
+
+// COUNTS TOTAL ITEMS ON SYSTEM
+$stmt = $pdo->query("SELECT COUNT(*) FROM INVENTORY");
+$totalitems = $stmt->fetchColumn();
+
+//COUNTS TOTAL CATEGORIES USED
+$stmt = $pdo->query("SELECT COUNT(DISTINCT category) FROM inventory");
+$categories = $stmt->fetchColumn();
+
+//COUNTS TOTAL OF LOW STOCK ITEMS
+$stmt = $pdo->query("SELECT COUNT(*) FROM inventory WHERE sta_tus = 'Low Stock' ");
+$lowStockItems = $stmt->fetchColumn();
+
+//COUNTS TOTAL OF OUT OF STOCK ITEMS
+$stmt = $pdo->query("SELECT COUNT(*) FROM inventory WHERE sta_tus = 'Out of Stock' ");
+$OutStockItems = $stmt->fetchColumn();
+
 ?>
 
 <!DOCTYPE html>
@@ -38,22 +56,23 @@ require_once("MVC_view_signup.php"); // Add this line
 <div class="parent">
     <div class="div3">
         <h1 class="inside-title">Storage Overview</h1>
+
         <div class="box-container">
             <div class="box1">
                 <p>Total Items</p>
-                <p>4</p>
+                <p><?= $totalitems?></p>
             </div>
             <div class="box2">
-                <p>Storage Used</p>
-                <p>50%</p>
+                <p>Categories</p>
+                <p><?= $categories?></p>
             </div>
             <div class="box3">
                 <p>Low Stock Items</p>
-                <p>16</p>
+                <p><?= $lowStockItems?></p>
             </div>
             <div class="box4">
                 <p>Out of Stock</p>
-                <p>10</p>
+                <p><?= $OutStockItems?></p>
             </div>
         </div>
 
@@ -79,8 +98,8 @@ require_once("MVC_view_signup.php"); // Add this line
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th>Display_order</th>
+                        <th>Items</th>
                         <th>Category</th>
                         <th>Quantity</th>
                         <th>Status</th>
@@ -98,12 +117,15 @@ require_once("MVC_view_signup.php"); // Add this line
 
                 <tbody>
                     <!-- This is where the items display -->
-
+                    
                      <!-- Loop Through All Items and Display Them in a Table -->
-                     <?php foreach($items as $item): ?>
+                     <?php 
+                     $counter = 1;
+                     foreach($items as $item): 
+                     ?>
                      <tr>
                         <!-- Inside of the [] is the name of column on our database -->
-                        <td><?= htmlspecialchars($item['id'])?></td>
+                        <td><?= $counter++?></td>
                         <td><?= htmlspecialchars($item['item_name'])?></td>
                         <td><?= htmlspecialchars($item['category'])?></td>
                         <td><?= htmlspecialchars($item['quantity'])?></td>
@@ -111,8 +133,8 @@ require_once("MVC_view_signup.php"); // Add this line
 
                         <!-- edit and delete button -->
                         <td>
-                            <a href="edit_item.php">Edit</a>
-                            <a href="delete_item.php" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="php_inventory/edit_item.php?id=<?= $item['id'] ?>">Edit</a>
+                            <a href="php_inventory/delete_item.php?id=<?= $item['id'] ?>" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                      </tr>
                      <?php endforeach; ?>
