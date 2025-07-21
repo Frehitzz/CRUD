@@ -8,7 +8,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $status = $_POST['sta_tus'];
 
     //SQL QUERY
-
     $stmt = $pdo->prepare("INSERT INTO inventory (item_name, category, quantity, sta_tus)
                         VALUES (?,?,?,?)");
     $stmt->execute([$itemname, $category, $quantity, $status]);
