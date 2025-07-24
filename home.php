@@ -54,7 +54,7 @@ $params = [];
 // if yes then:
 if ($search !== ''){
     /*
-    '.=' = dinagdag lang sa query mo sa $sql
+    '.=' = idadagdag lang sa query mo sa $sql
       = Only get the items where the name looks like what the user typed
     */
     $sql .= " AND item_name LIKE :search";
@@ -91,7 +91,7 @@ $itemsearch = $stmt->fetchAll(); // Gets all the matching items from the databas
 <body>
      <div class="navigation">
         <div class="greetings">
-            <h1 class="title"><a href="home.php"> Welcome <?php echo htmlspecialchars($_SESSION['user_username']);?></a></h1>
+            <h1 class="title"><a href="home.php" class="link-greet"> Welcome, <?php echo htmlspecialchars($_SESSION['user_username']);?>!</a></h1>
         </div>
         <div class="right-nav">
             <i id="bell" class="fa-solid fa-bell"></i>
@@ -106,33 +106,33 @@ $itemsearch = $stmt->fetchAll(); // Gets all the matching items from the databas
 
         <div class="box-container">
             <div class="box1">
-                <p>Total Items</p>
-                <p><?= $totalitems?></p>
+                <p class="box-title">Total Items</p>
+                <p class="box-value" style="color: yellowgreen;"><?= $totalitems?></p>
             </div>
             <div class="box2">
-                <p>Categories</p>
-                <p><?= $categories?></p>
+                <p class="box-title">Categories</p>
+                <p class="box-value" style="color: yellow;"><?= $categories?></p>
             </div>
             <div class="box3">
-                <p>Low Stock Items</p>
-                <p><?= $lowStockItems?></p>
+                <p class="box-title">Low Stock Items</p>
+                <p class="box-value" style="color: orange;"><?= $lowStockItems?></p>
             </div>
             <div class="box4">
-                <p>Out of Stock</p>
-                <p><?= $OutStockItems?></p>
+                <p class="box-title">Out of Stock</p>
+                <p class="box-value" style="color: red;"><?= $OutStockItems?></p>
             </div>
         </div>
 
         <div class="inventory">
             <div class="title-and-button">
-                <h1>Inventory Management</h1>
+                <h1 class="inventory-title">Inventory Management</h1>
                 <a href="php_inventory/add_item.php"><button class="button1">+ Add New Item</button></a>
             </div>
 
-            <form action="home.php" method="GET">
-                <input type="text" name="search" placeholder="Search Items" value="<?= htmlspecialchars($search)?>">
+            <form class="inventory-form" action="home.php" method="GET">
+                <input class="search-input" type="text" name="search" placeholder="Search Items" value="<?= htmlspecialchars($search)?>">
 
-                <select value="Select categories" name="category">
+                <select value="Select categories" name="category" class="category-input">
                     <option value="All">All categories</option>
                 <?php foreach($search_categ as $cat): ?>
                         <option value="<?= htmlspecialchars($cat) ?>" <?= $category === $cat ? 'selected' : '' ?>>
@@ -140,7 +140,7 @@ $itemsearch = $stmt->fetchAll(); // Gets all the matching items from the databas
                         </option>
                 <?php endforeach; ?>
                 </select>
-                <input type="submit" value="Apply Filter">
+                <input type="submit" value="Apply Filter" class="inventory-button">
             </form>
         </div>
 
