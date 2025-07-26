@@ -106,23 +106,28 @@ $itemsearch = $stmt->fetchAll(); // Gets all the matching items from the databas
 
         <div class="box-container">
             <div class="box1">
-                <p class="box-title">Total Items</p>
                 <p class="box-value" style="color: yellowgreen;"><?= $totalitems?></p>
+                <p class="box-title">Total Items</p>
+                
             </div>
             <div class="box2">
-                <p class="box-title">Categories</p>
                 <p class="box-value" style="color: yellow;"><?= $categories?></p>
+                <p class="box-title">Categories</p>
+                
             </div>
             <div class="box3">
-                <p class="box-title">Low Stock Items</p>
                 <p class="box-value" style="color: orange;"><?= $lowStockItems?></p>
+                <p class="box-title">Low Stock Items</p>
+                
             </div>
             <div class="box4">
-                <p class="box-title">Out of Stock</p>
                 <p class="box-value" style="color: red;"><?= $OutStockItems?></p>
+                <p class="box-title">Out of Stock</p>
+                
             </div>
         </div>
 
+        <div class="child">
         <div class="inventory">
             <div class="title-and-button">
                 <h1 class="inventory-title">Inventory Management</h1>
@@ -210,6 +215,7 @@ $itemsearch = $stmt->fetchAll(); // Gets all the matching items from the databas
                      ?>
                 </tbody>
             </table>
+        </div>
         </div>
 
     </div>
