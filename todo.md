@@ -84,18 +84,21 @@
 
 ## July 24 - Thursday
 [] style the system
-[] change the color of status, that depends on its status
-[] make the input value uppercase
-[] find a better background color
-[] try pastel color
-[] style edit form
-[] style addnew item form
+[x] find a better background color
+[x] try pastel color
+[x] style edit form
+[x] style addnew item form
 
 
 
 ## future changes
+[] change the color of status, that depends on its status
+[] make the input value uppercase
 [] when the user have login fix the session that have an error
 [] make the input value uppercase
+[] in the settings icon add a edit username and change password
+[] add a dark mode toggle
+[] add a notes page
 
 
 designs:::
