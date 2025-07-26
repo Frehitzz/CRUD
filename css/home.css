@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("../images/bg.jpg");
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#7db9e8 100%);
     background-size: cover;
 }
 
@@ -123,14 +123,14 @@ body{
     width: 100%; /* Make container full width */
     overflow-x: auto; /* Add horizontal scroll if needed */
     margin-top: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.438);
     border-radius: 20px;
 }
 
 table {
     width: 100%; /* Make table fill its container */
     border-collapse: collapse; /* Remove cell spacing */
-    table-layout: fixed; /* Optional: for consistent column widths */
-    margin-bottom: 50px;
+     /* Optional: for consistent column widths */
     background-color: transparent;
     backdrop-filter: blur(7px);
     color: white;
@@ -142,19 +142,28 @@ tr{
 
 th{
     backdrop-filter: blur(10px);
-    background-color: grey;
+    background-color: rgba(255, 255, 255, 0.438);
     padding: 15px;
-    border: 2px solid grey;
+    /* border: 2px solid rgba(255, 255, 255, 0.438); */
     font-size: 20px;
     font-family: 'Segoe UI';
 }
 
 td {
     padding: 15px 15px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
     text-align: left; /* Align text to left (or center if preferred) */
     text-align: center;
     font-family: 'Segoe UI';
+}
+
+tr{
+    border-top: 1px solid rgba(255, 255, 255, 0.438);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.438);
+}
+
+tr:last-child{
+    border: none;
 }
 
 .fa-trash{
@@ -214,12 +223,14 @@ td {
 
 .category-input{
     height: 35px;
-    width: 100px;
+    width: 120px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     background-color: transparent;
     border-radius: 20px;
     color: white;
     backdrop-filter: blur(7px);
+    padding-left: 10px;
+    outline: none;
 }
 
 .inventory-button{
@@ -230,4 +241,14 @@ td {
     border-radius: 18px;
     backdrop-filter: blur(7px);
     font-weight: 500;
+}
+
+.child{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    background-color: transparent;
+    backdrop-filter: blur(7px);
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
