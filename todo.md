@@ -44,12 +44,60 @@
 [x] add a token column to the database
 
 ## July 15 - Tuesday
-[] learn how to use phpmailer
+[x] learn how to use phpmailer
+[x] set up the phpmailer
+[x] sending email with phpmailer
+[x] create the reset password page
+
+## July 17 - Thursday
+[x] review the forgot_pass.php
+[x] review the reset_pass.php
+[x] review the send_reset.php
+[x] take notes
+[x] create notes and mindmap on how to do that 
+[x] when the pass reset link is sent the color must be green
+[x] strength bar on the reset pass page
+
+## July 18 - Friday
+[x] fix the checkbox and label not aligned
+[x] create if the pass and confirm pass not match
+[x] create if the pass strength is not met
+[x] fix font 
+[x] the password reset success fully must be color green
 
 
-##
-[] design the dashb0ard
-[] Create the dashboard page
-[] Create the logout function
-[] Create the dashboard UI
-[] Style the dashboard UI
+## July 21 - Monday
+[x] create the add new item form
+[x] add function for editing items
+[x] deleting items 
+[x] reorder the id if deleted
+[x] finished the storage over view
+
+## July 22 - Tuesday
+[] STYLE THE HOME.PHP
+[x] make the search functionable
+[x] make the select category functionable
+[x] display the searched items
+
+## July 23 - Wednesday
+[x] add edit and delete logo button
+
+## July 24 - Thursday
+[] style the system
+[] change the color of status, that depends on its status
+[] make the input value uppercase
+[] find a better background color
+[] try pastel color
+[] style edit form
+[] style addnew item form
+
+
+
+## future changes
+[] when the user have login fix the session that have an error
+[] make the input value uppercase
+
+
+designs:::
+2px solid rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(7px);
